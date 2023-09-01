@@ -12,6 +12,11 @@ import androidx.fragment.app.Fragment;
 
 public class LevelThree extends Fragment {
 
+    private boolean bubble1Popped = false;
+    private boolean bubble2Popped = false;
+    private boolean bubble3Popped = false;
+    private boolean bubble4Popped = false;
+    private boolean bubble5Popped = false;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -23,11 +28,49 @@ public class LevelThree extends Fragment {
         ImageView bubble4 = view.findViewById(R.id.bubble4);
         ImageView bubble5 = view.findViewById(R.id.bubble5);
 
-        bubble1.setOnClickListener(view1 -> bubble1.setImageResource(R.drawable.red_big_popped));
-        bubble2.setOnClickListener(view1 -> bubble2.setImageResource(R.drawable.blue_big_popped));
-        bubble3.setOnClickListener(view1 -> bubble3.setImageResource(R.drawable.green_big_popped));
-        bubble4.setOnClickListener(view1 -> bubble4.setImageResource(R.drawable.pink_popped));
-        bubble5.setOnClickListener(view1 -> bubble5.setImageResource(R.drawable.yellow_reg_popped));
+        ((MainActivity) requireActivity()).currentLevel(3);
+
+        bubble1.setOnClickListener((view1 -> {
+            if (!bubble1Popped) {
+                bubble1.setImageResource(R.drawable.red_big_popped);
+                bubble1Popped = true;
+                ((MainActivity) requireActivity()).updateScore(10);
+                bubble1.setEnabled(false);
+            }
+        }));
+
+        bubble2.setOnClickListener((view1 -> {
+            if (!bubble2Popped) {
+                bubble2.setImageResource(R.drawable.blue_big_popped);
+                bubble2Popped = true;
+                ((MainActivity) requireActivity()).updateScore(10);
+                bubble2.setEnabled(false);
+            }
+        }));
+        bubble3.setOnClickListener((view1 -> {
+            if (!bubble3Popped) {
+                bubble3.setImageResource(R.drawable.green_big_popped);
+                bubble3Popped = true;
+                ((MainActivity) requireActivity()).updateScore(10);
+                bubble3.setEnabled(false);
+            }
+        }));
+        bubble4.setOnClickListener((view1 -> {
+            if (!bubble4Popped) {
+                bubble4.setImageResource(R.drawable.pink_popped);
+                bubble4Popped = true;
+                ((MainActivity) requireActivity()).updateScore(10);
+                bubble4.setEnabled(false);
+            }
+        }));
+        bubble5.setOnClickListener((view1 -> {
+            if (!bubble5Popped) {
+                bubble5.setImageResource(R.drawable.yellow_reg_popped);
+                bubble5Popped = true;
+                ((MainActivity) requireActivity()).updateScore(10);
+                bubble5.setEnabled(false);
+            }
+        }));
 
         return view;
     }

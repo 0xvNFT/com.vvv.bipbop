@@ -8,11 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.text.MessageFormat;
+
 public class MainActivity extends AppCompatActivity {
     private ImageView home;
     private ImageView pause_play;
     private ImageView leaderboard;
     private TextView score;
+    private int userScore = 0;
     private TextView timer;
     private TextView level;
     @Override
@@ -33,4 +36,14 @@ public class MainActivity extends AppCompatActivity {
             ft.commit();
         }
     }
+
+    public void updateScore(int points) {
+        userScore += points;
+        score.setText(MessageFormat.format("Score: {0}", userScore));
+    }
+
+    public void currentLevel(int levels) {
+        level.setText(MessageFormat.format("Level: {0}", levels));
+    }
+
 }
