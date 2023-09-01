@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_4">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lvl_4_pattern"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/purple_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|start"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="55dp"
+            android:src="@drawable/pink_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/red_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="65dp"
+            android:src="@drawable/orange_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/yellow_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginTop="78dp"
+            android:layout_marginEnd="65dp"
+            android:src="@drawable/green_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/blue_small"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bubble8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="55dp"
+            android:layout_marginBottom="62dp"
+            android:src="@drawable/indigo_small"
+            tools:ignore="ContentDescription" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
