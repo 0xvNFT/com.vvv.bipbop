@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 timerTextView.setText(getString(R.string.timer_text));
+                userScore = 0;
+                score.setText(MessageFormat.format("Score: {0}", userScore));
                 showTimeIsUpDialog();
             }
         }.start();
