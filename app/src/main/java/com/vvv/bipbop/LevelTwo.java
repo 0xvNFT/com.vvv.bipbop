@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class LevelTwo extends Fragment {
+public class LevelTwo extends BaseLevelFragment {
     private boolean bubble1Popped = false;
     private boolean bubble2Popped = false;
     private boolean bubble3Popped = false;
@@ -31,6 +30,9 @@ public class LevelTwo extends Fragment {
                 bubble1Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble1.setEnabled(false);
+                if (isLevelTwoCompleted()) {
+                    onLevelCompleted();
+                }
             }
         });
         bubble2.setOnClickListener(view1 -> {
@@ -39,6 +41,9 @@ public class LevelTwo extends Fragment {
                 bubble2Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble2.setEnabled(false);
+                if (isLevelTwoCompleted()) {
+                    onLevelCompleted();
+                }
             }
         });
         bubble3.setOnClickListener(view1 -> {
@@ -47,9 +52,16 @@ public class LevelTwo extends Fragment {
                 bubble3Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble3.setEnabled(false);
+                if (isLevelTwoCompleted()) {
+                    onLevelCompleted();
+                }
             }
         });
 
         return view;
+    }
+
+    protected boolean isLevelTwoCompleted() {
+        return bubble1Popped && bubble2Popped && bubble3Popped;
     }
 }

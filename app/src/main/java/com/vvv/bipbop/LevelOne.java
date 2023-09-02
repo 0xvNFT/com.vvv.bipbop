@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class LevelOne extends Fragment {
+public class LevelOne extends BaseLevelFragment {
     private boolean bubble1Popped = false;
     private boolean bubble2Popped = false;
 
@@ -50,38 +49,8 @@ public class LevelOne extends Fragment {
         return view;
     }
 
-    private boolean isLevelOneCompleted() {
+    protected boolean isLevelOneCompleted() {
         return bubble1Popped && bubble2Popped;
-    }
-
-    private void onLevelCompleted() {
-        showLevelCompleteDialog();
-    }
-
-    private void showLevelCompleteDialog() {
-        pauseTimer();
-        CustomLevelCompleteDialog dialog = new CustomLevelCompleteDialog(requireContext(), ((MainActivity) requireActivity()).getScore(), ((MainActivity) requireActivity()).getTimeRemaining());
-
-        dialog.setScore(((MainActivity) requireActivity()).getScore());
-        dialog.setTimeRemaining(((MainActivity) requireActivity()).getTimeRemaining());
-        dialog.setNextLevelClickListener(view -> {
-            ((MainActivity) requireActivity()).proceedToNextLevel();
-            dialog.dismiss();
-            restartTimer();
-        });
-
-        dialog.show();
-    }
-
-    private void pauseTimer() {
-        if (((MainActivity) requireActivity()).timer != null) {
-            ((MainActivity) requireActivity()).timer.cancel();
-        }
-    }
-
-    private void restartTimer() {
-        ((MainActivity) requireActivity()).timer.cancel();
-        ((MainActivity) requireActivity()).timer.start();
     }
 
 }

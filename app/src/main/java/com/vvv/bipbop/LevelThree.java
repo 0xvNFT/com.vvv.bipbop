@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class LevelThree extends Fragment {
+public class LevelThree extends BaseLevelFragment {
 
     private boolean bubble1Popped = false;
     private boolean bubble2Popped = false;
@@ -36,6 +35,9 @@ public class LevelThree extends Fragment {
                 bubble1Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble1.setEnabled(false);
+                if (isLevelThreeCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
 
@@ -45,6 +47,9 @@ public class LevelThree extends Fragment {
                 bubble2Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble2.setEnabled(false);
+                if (isLevelThreeCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble3.setOnClickListener((view1 -> {
@@ -53,6 +58,9 @@ public class LevelThree extends Fragment {
                 bubble3Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble3.setEnabled(false);
+                if (isLevelThreeCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble4.setOnClickListener((view1 -> {
@@ -61,6 +69,9 @@ public class LevelThree extends Fragment {
                 bubble4Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble4.setEnabled(false);
+                if (isLevelThreeCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble5.setOnClickListener((view1 -> {
@@ -69,9 +80,16 @@ public class LevelThree extends Fragment {
                 bubble5Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble5.setEnabled(false);
+                if (isLevelThreeCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
 
         return view;
+    }
+
+    protected boolean isLevelThreeCompleted() {
+        return bubble1Popped && bubble2Popped && bubble3Popped && bubble4Popped && bubble5Popped;
     }
 }

@@ -8,9 +8,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
-public class LevelFour extends Fragment {
+public class LevelFour extends BaseLevelFragment {
 
     private boolean bubble1Popped = false;
     private boolean bubble2Popped = false;
@@ -43,6 +42,9 @@ public class LevelFour extends Fragment {
                 bubble1Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble1.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble2.setOnClickListener((view1 -> {
@@ -51,6 +53,9 @@ public class LevelFour extends Fragment {
                 bubble2Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble2.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble3.setOnClickListener((view1 -> {
@@ -59,6 +64,9 @@ public class LevelFour extends Fragment {
                 bubble3Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble3.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble4.setOnClickListener((view1 -> {
@@ -67,6 +75,9 @@ public class LevelFour extends Fragment {
                 bubble4Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble4.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble5.setOnClickListener((view1 -> {
@@ -75,6 +86,9 @@ public class LevelFour extends Fragment {
                 bubble5Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble5.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble6.setOnClickListener((view1 -> {
@@ -83,6 +97,9 @@ public class LevelFour extends Fragment {
                 bubble6Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble6.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble7.setOnClickListener((view1 -> {
@@ -91,6 +108,9 @@ public class LevelFour extends Fragment {
                 bubble7Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble7.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
         bubble8.setOnClickListener((view1 -> {
@@ -99,9 +119,16 @@ public class LevelFour extends Fragment {
                 bubble8Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble8.setEnabled(false);
+                if (isLevelFourCompleted()) {
+                    onLevelCompleted();
+                }
             }
         }));
 
         return view;
+    }
+
+    protected boolean isLevelFourCompleted() {
+        return bubble1Popped && bubble2Popped && bubble3Popped && bubble4Popped && bubble5Popped && bubble6Popped && bubble7Popped && bubble8Popped;
     }
 }

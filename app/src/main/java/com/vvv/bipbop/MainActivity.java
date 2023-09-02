@@ -95,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private int getCurrentLevel() {
-        return 1;
+    public int getCurrentLevel() {
+        String levelText = level.getText().toString();
+        String numericPart = levelText.replaceAll("[^\\d.]", "");
+        return Integer.parseInt(numericPart);
     }
 
     private Fragment getLevelFragment(int level) {
