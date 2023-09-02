@@ -1,6 +1,7 @@
 package com.vvv.bipbop;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -18,9 +19,6 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     public CountDownTimer timer;
-    private ImageView home;
-    private ImageView pause_play;
-    private ImageView leaderboard;
     private TextView score;
     private int userScore = 0;
     private TextView timerTextView;
@@ -39,12 +37,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         timer = startTimer();
 
-        home = findViewById(R.id.home);
-        pause_play = findViewById(R.id.pause_play);
+        ImageView home = findViewById(R.id.home);
+        home.setOnClickListener(v -> {
+            onBackPressed();
+        });
+        ImageView pause_play = findViewById(R.id.pause_play);
+        pause_play.setOnClickListener(v -> {
+            onPause();
+        });
         level = findViewById(R.id.level);
         score = findViewById(R.id.score);
         timerTextView = findViewById(R.id.timer);
-        leaderboard = findViewById(R.id.leaderboard);
+        ImageView leaderboard = findViewById(R.id.leaderboard);
 
         leaderboard.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateScore(int points) {
         userScore += points;
         score.setText(MessageFormat.format("Score: {0}", userScore));
+        saveScore(userScore);
     }
 
     public void currentLevel(int levels) {
@@ -152,6 +157,13 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return 0;
         }
+    }
+
+    private void saveScore(int userScore) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("USER_SCORE", userScore);
+        editor.apply();
     }
 
     public void onPause() {

@@ -33,7 +33,6 @@
             android:layout_marginTop="80dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/item_score_bg"
             android:textAlignment="center"
             tools:ignore="ContentDescription" />
 
