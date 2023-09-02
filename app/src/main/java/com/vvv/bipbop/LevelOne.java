@@ -29,6 +29,10 @@ public class LevelOne extends Fragment {
                 bubble1Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble1.setEnabled(false);
+
+                if (isLevelOneCompleted()) {
+                    onLevelCompleted();
+                }
             }
         });
         bubble2.setOnClickListener(view1 -> {
@@ -37,10 +41,47 @@ public class LevelOne extends Fragment {
                 bubble2Popped = true;
                 ((MainActivity) requireActivity()).updateScore(10);
                 bubble2.setEnabled(false);
+
+                if (isLevelOneCompleted()) {
+                    onLevelCompleted();
+                }
             }
         });
-
-
         return view;
     }
+
+    private boolean isLevelOneCompleted() {
+        return bubble1Popped && bubble2Popped;
+    }
+
+    private void onLevelCompleted() {
+        showLevelCompleteDialog();
+    }
+
+    private void showLevelCompleteDialog() {
+        pauseTimer();
+        CustomLevelCompleteDialog dialog = new CustomLevelCompleteDialog(requireContext(), ((MainActivity) requireActivity()).getScore(), ((MainActivity) requireActivity()).getTimeRemaining());
+
+        dialog.setScore(((MainActivity) requireActivity()).getScore());
+        dialog.setTimeRemaining(((MainActivity) requireActivity()).getTimeRemaining());
+        dialog.setNextLevelClickListener(view -> {
+            ((MainActivity) requireActivity()).proceedToNextLevel();
+            dialog.dismiss();
+            restartTimer();
+        });
+
+        dialog.show();
+    }
+
+    private void pauseTimer() {
+        if (((MainActivity) requireActivity()).timer != null) {
+            ((MainActivity) requireActivity()).timer.cancel();
+        }
+    }
+
+    private void restartTimer() {
+        ((MainActivity) requireActivity()).timer.cancel();
+        ((MainActivity) requireActivity()).timer.start();
+    }
+
 }
