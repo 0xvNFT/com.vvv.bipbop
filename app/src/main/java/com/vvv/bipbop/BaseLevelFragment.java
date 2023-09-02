@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,10 @@ public class BaseLevelFragment extends Fragment {
         });
 
         dialog.show();
+    }
+
+    protected Window getWindow() {
+        return requireActivity().getWindow();
     }
 
     protected void pauseTimer() {

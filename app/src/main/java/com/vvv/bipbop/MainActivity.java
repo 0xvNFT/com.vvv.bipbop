@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.text.MessageFormat;
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     public CountDownTimer timer;
@@ -78,8 +79,28 @@ public class MainActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 timerTextView.setText(getString(R.string.timer_text));
+                showTimeIsUpDialog();
             }
         }.start();
+    }
+
+    private void showTimeIsUpDialog() {
+        CustomTimeIsUpDialog dialog = new CustomTimeIsUpDialog(this, this.getTimeRemaining());
+        dialog.show();
+
+        dialog.setRetryClickListener(view -> {
+            retryCurrentLevel();
+            timer.start();
+
+            dialog.dismiss();
+        });
+    }
+
+    private void retryCurrentLevel() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragmentContainer, Objects.requireNonNull(getLevelFragment(getCurrentLevel())));
+        ft.commit();
     }
 
     public void proceedToNextLevel() {
@@ -115,12 +136,9 @@ public class MainActivity extends AppCompatActivity {
                 return null;
         }
     }
-
-
     public int getScore() {
         return userScore;
     }
-
     public int getTimeRemaining() {
         String timerText = timerTextView.getText().toString();
         String[] timeParts = timerText.split(":");
@@ -134,8 +152,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onPause() {
+        super.onPause();
+        pauseTimer();
+    }
 
-//    public int getTimeRemaining() {
-//        return timerTextView.getText().length();
-//    }
+    private void pauseTimer() {
+        timer.cancel();
+    }
+
+    public void onResume() {
+        super.onResume();
+        restartTimer();
+    }
+
+    private void restartTimer() {
+        timer.start();
+    }
 }

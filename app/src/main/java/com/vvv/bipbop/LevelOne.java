@@ -16,6 +16,14 @@ public class LevelOne extends BaseLevelFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         View view = inflater.inflate(R.layout.fragment_level_one, container, false);
 
         ImageView bubble1 = view.findViewById(R.id.bubble1);
@@ -48,7 +56,6 @@ public class LevelOne extends BaseLevelFragment {
         });
         return view;
     }
-
     protected boolean isLevelOneCompleted() {
         return bubble1Popped && bubble2Popped;
     }

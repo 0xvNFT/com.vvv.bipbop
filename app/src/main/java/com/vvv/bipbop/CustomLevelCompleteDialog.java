@@ -14,11 +14,19 @@ public class CustomLevelCompleteDialog extends Dialog {
     private final TextView scoreTextView;
     private final TextView timeRemainingTextView;
     private final TextView nextLevelTexView;
-    public int score;
-    public int timeRemaining;
+    protected int score;
+    protected int timeRemaining;
 
     public CustomLevelCompleteDialog(@NonNull Context context, int score, int timeRemaining) {
         super(context);
+        View decorView = Objects.requireNonNull(getWindow()).getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         this.score = score;
         this.timeRemaining = timeRemaining;
 
